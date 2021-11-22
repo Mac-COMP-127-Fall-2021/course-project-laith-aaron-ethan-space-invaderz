@@ -2,7 +2,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
 public class SpaceInvaderz {
-    
+    //change!!!!!!!!!!!!!
     private static final int CANVAS_WIDTH = 900;
     private static final int CANVAS_HEIGHT = 600;
     private static CanvasWindow canvas;
@@ -16,18 +16,11 @@ public class SpaceInvaderz {
         SpaceShip spaceShip = new SpaceShip(canvas);
         AlienWall AlienWall = new AlienWall(canvas);
 
-        // make a list of bullets
-        // add new bullet on clock
-        // animate entire list
-
-
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas));
         canvas.animate(() -> BulletManger.shootBullets());
 
 
-
-        
     }
 
     private void setCanvasBackground() {
