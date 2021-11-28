@@ -1,4 +1,3 @@
-
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
@@ -13,9 +12,9 @@ public class Alien extends Image {
         this.setScale(0.15);
     }
 
-    public void addToCanvas(CanvasWindow canvas) {
-        canvas.add(this);
-    }
+    // public void addToCanvas(CanvasWindow canvas) {
+    //     canvas.add(this);
+    // }
 
     public void updatePosition(double x, double y) {
         this.setPosition(x, y);

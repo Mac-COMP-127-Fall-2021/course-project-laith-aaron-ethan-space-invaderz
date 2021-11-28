@@ -5,16 +5,16 @@ public class SpaceInvaderz {
 
     private static final int CANVAS_WIDTH = 900;
     private static final int CANVAS_HEIGHT = 600;
-    private static CanvasWindow canvas;
-
+    private static CanvasWindow canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);;
+    private static AlienWall alienWall;
     private static Image background;
 
 
     public SpaceInvaderz(){
-        canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);
+        // this.canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);
         setCanvasBackground();
         SpaceShip spaceShip = new SpaceShip(canvas);
-        AlienWall AlienWall = new AlienWall(canvas);
+        this.alienWall = new AlienWall(canvas);
 
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas));
