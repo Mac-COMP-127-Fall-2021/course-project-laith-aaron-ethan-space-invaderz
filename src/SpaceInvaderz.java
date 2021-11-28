@@ -2,7 +2,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
 public class SpaceInvaderz {
-    //change!!!!!!!!!!!!!
+
     private static final int CANVAS_WIDTH = 900;
     private static final int CANVAS_HEIGHT = 600;
     private static CanvasWindow canvas;

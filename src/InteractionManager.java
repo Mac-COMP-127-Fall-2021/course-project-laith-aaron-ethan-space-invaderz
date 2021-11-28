@@ -1,13 +1,14 @@
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.Ellipse;
+
+import edu.macalester.graphics.Point;
 
 public class InteractionManager {
     public void alienIntersection(Bullet bullet, Alien alien, CanvasWindow canvas) {
         
-        Ellipse Bulletpoint = new Point(Bullet.getCenterX(), Bullet.getCenterY() + Ball.BALL_RADIUS + 1);
+        Point bulletPoint = new Point(bullet.getX(), bullet.getY() + bullet.getRadius()+ 1);
 
         
-        if (canvas.getElementAt(bullet) == alien) {
+        if (canvas.getElementAt(bulletPoint) == alien) {
             
         }
     }

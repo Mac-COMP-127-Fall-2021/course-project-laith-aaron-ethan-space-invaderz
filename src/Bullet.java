@@ -3,20 +3,19 @@ import edu.macalester.graphics.Ellipse;
 import java.awt.Color;
 
 
-public class Bullet {
+public class Bullet extends Ellipse{
     private static final double BULLET_RADIUS = 4;
     private double centerX;
     private double centerY;
-    private Ellipse bullet;
 
     public Bullet(CanvasWindow canvas) {
+        super(SpaceShip.getCenterX(), SpaceShip.getCenterY(), BULLET_RADIUS, BULLET_RADIUS * 7);
         this.centerX = SpaceShip.getCenterX();
         this.centerY = SpaceShip.getCenterY();
-        bullet = new Ellipse(SpaceShip.getCenterX(), SpaceShip.getCenterY(), BULLET_RADIUS, BULLET_RADIUS * 7);
-        bullet.setFilled(true);
-        bullet.setStroked(false);
-        bullet.setFillColor(new Color(255, 149, 5));
-        canvas.add(bullet, centerX, centerY);
+        this.setFilled(true);
+        this.setStroked(false);
+        this.setFillColor(new Color(255, 149, 5));
+        canvas.add(this, centerX, centerY);
     }
 
     /**
@@ -29,29 +28,15 @@ public class Bullet {
     }
 
     /**
-     * returns ball's center x position.
-     * 
-     * @return ball's center x as double.
-     */
-    public double getXposition() {
-        return centerX;
-    }
-
-    /**
-     * returns ball's center y position.
-     * 
-     * @return ball's center y as double.
-     */
-    public double getYposition() {
-        return centerY;
-    }
-
-    /**
      * updates bullet's Y position
      * 
      * @param y2 new Y position
      */
     public void updateYPosition(double y2){
-        bullet.setY(y2);
+        this.setY(y2);
+    }
+
+    public double getRadius() {
+        return BULLET_RADIUS;
     }
 }
