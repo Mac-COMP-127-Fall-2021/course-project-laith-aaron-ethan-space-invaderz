@@ -7,20 +7,24 @@ public class SpaceInvaderz {
     private static final int CANVAS_HEIGHT = 600;
     private static CanvasWindow canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);;
     private static AlienWall alienWall;
-    private static Image background;
+    private InteractionManager interactionManager;
 
+    private static Image background;
 
     public SpaceInvaderz(){
         // this.canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);
         setCanvasBackground();
         SpaceShip spaceShip = new SpaceShip(canvas);
-        this.alienWall = new AlienWall(canvas);
+
+        alienWall = new AlienWall(canvas);
+        interactionManager = new InteractionManager();
+    
+        
+        
 
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
-        canvas.onClick(event -> BulletManger.addShot(canvas));
-        canvas.animate(() -> BulletManger.shootBullets());
-
-
+        canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
+        canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas)); // this is causing the error, also caused in Bullet Manager
     }
 
     private void setCanvasBackground() {

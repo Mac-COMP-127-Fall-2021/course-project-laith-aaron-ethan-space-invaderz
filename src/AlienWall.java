@@ -7,7 +7,6 @@ public class AlienWall extends GraphicsGroup {
     
     private List<Alien> aliens = new ArrayList<Alien>();
 
-
     public AlienWall(CanvasWindow canvas) {
         super();
         generateAlienWall();

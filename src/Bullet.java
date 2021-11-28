@@ -2,13 +2,13 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 import java.awt.Color;
 
-
 public class Bullet extends Ellipse{
     private static final double BULLET_RADIUS = 4;
     private double centerX;
     private double centerY;
+    private InteractionManager interactionManager;
 
-    public Bullet(CanvasWindow canvas) {
+    public Bullet(CanvasWindow canvas, AlienWall alienWall) {
         super(SpaceShip.getCenterX(), SpaceShip.getCenterY(), BULLET_RADIUS, BULLET_RADIUS * 7);
         this.centerX = SpaceShip.getCenterX();
         this.centerY = SpaceShip.getCenterY();
@@ -16,6 +16,8 @@ public class Bullet extends Ellipse{
         this.setStroked(false);
         this.setFillColor(new Color(255, 149, 5));
         canvas.add(this, centerX, centerY);
+        interactionManager = new InteractionManager();
+        
     }
 
     /**
@@ -38,5 +40,9 @@ public class Bullet extends Ellipse{
 
     public double getRadius() {
         return BULLET_RADIUS;
+    }
+
+    public void checkIntersection(AlienWall alienWall, CanvasWindow canvas) {
+        interactionManager.alienIntersection(this, alienWall, canvas);
     }
 }
