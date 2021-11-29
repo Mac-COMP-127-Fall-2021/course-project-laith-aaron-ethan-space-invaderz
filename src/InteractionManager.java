@@ -12,7 +12,7 @@ public class InteractionManager {
             if (alienWall.getElementAt(bulletPoint) == alien) {
                 alienWall.remove(alien);
                 alienWall.getAliens().remove(alien);
-                
+                canvas.remove(bullet);
                 return;
             }
         }
