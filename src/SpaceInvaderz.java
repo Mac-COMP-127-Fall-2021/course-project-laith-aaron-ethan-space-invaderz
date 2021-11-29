@@ -15,9 +15,11 @@ public class SpaceInvaderz {
         // this.canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);
         setCanvasBackground();
         SpaceShip spaceShip = new SpaceShip(canvas);
+        SpaceShieldManger.generateSpaceShields(canvas);
 
         alienWall = new AlienWall(canvas);
         interactionManager = new InteractionManager();
+        
     
         
         
