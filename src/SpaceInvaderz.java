@@ -19,11 +19,18 @@ public class SpaceInvaderz {
 
         alienWall = new AlienWall(canvas);
         interactionManager = new InteractionManager();
+<<<<<<< Updated upstream
         HealthMeter healthMeter = new HealthMeter(CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.05, canvas);
     
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
         canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas));
+=======
+
+        canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
+        canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
+        canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas)); // this is causing the error, also caused in Bullet Manager
+>>>>>>> Stashed changes
         canvas.animate(() -> alienWall.moveY(canvas));
         canvas.animate(() -> alienWall.moveX(canvas));
     }

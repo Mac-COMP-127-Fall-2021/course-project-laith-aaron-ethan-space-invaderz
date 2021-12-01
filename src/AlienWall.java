@@ -6,8 +6,14 @@ import edu.macalester.graphics.CanvasWindow;
 public class AlienWall extends GraphicsGroup {
     
     private List<Alien> aliens = new ArrayList<Alien>();
+<<<<<<< Updated upstream
     private double xVelocity = 0.5;
     private double yVelocity = 0.05;
+=======
+    private double yVelocity = 0.05;
+    private double xVelocity = 0.05;
+    
+>>>>>>> Stashed changes
 
     public AlienWall(CanvasWindow canvas) {
         super();
@@ -44,7 +50,10 @@ public class AlienWall extends GraphicsGroup {
             xVelocity = -1 * xVelocity;
         }
     }
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 }
 
