@@ -19,6 +19,8 @@ public class SpaceInvaderz {
 
         alienWall = new AlienWall(canvas);
         interactionManager = new InteractionManager();
+        HealthMeter healthMeter = new HealthMeter(CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.05, canvas);
+        
         
     
         
@@ -27,6 +29,7 @@ public class SpaceInvaderz {
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
         canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas)); // this is causing the error, also caused in Bullet Manager
+
     }
 
     private void setCanvasBackground() {
