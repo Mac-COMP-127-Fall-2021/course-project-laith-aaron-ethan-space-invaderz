@@ -4,7 +4,7 @@ import edu.macalester.graphics.Point;
 
 public class InteractionManager {
 
-    public void alienIntersection(Bullet bullet, AlienWall alienWall, CanvasWindow canvas) {
+    public boolean alienIntersection(Bullet bullet, AlienWall alienWall, CanvasWindow canvas) {
         
         Point bulletPoint = new Point(bullet.getX(), bullet.getY() + bullet.getRadius()+ 1);
 
@@ -13,10 +13,10 @@ public class InteractionManager {
                 alienWall.remove(alien);
                 alienWall.getAliens().remove(alien);
                 canvas.remove(bullet);
-                return;
+                return true;
             }
         }
-        
+        return false;
     }
 }
 

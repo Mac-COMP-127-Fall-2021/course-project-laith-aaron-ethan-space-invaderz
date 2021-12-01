@@ -42,7 +42,7 @@ public class Bullet extends Ellipse{
         return BULLET_RADIUS;
     }
 
-    public void checkIntersection(AlienWall alienWall, CanvasWindow canvas) {
-        interactionManager.alienIntersection(this, alienWall, canvas);
+    public boolean checkIntersection(AlienWall alienWall, CanvasWindow canvas) {
+        return interactionManager.alienIntersection(this, alienWall, canvas);
     }
 }

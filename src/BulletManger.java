@@ -14,12 +14,17 @@ public class BulletManger {
     }
 
     public static void shootBullets(AlienWall alienWall, InteractionManager interactionManager, CanvasWindow canvas){
+        ArrayList<Bullet> removedBullets = new ArrayList<>();
         for (Bullet bullet : bullets) {
             bullet.shoot();
-            bullet.checkIntersection(alienWall, canvas);
+            if (bullet.checkIntersection(alienWall, canvas)) {
+                removedBullets.add(bullet);
+        };
+    }
+        for (Bullet bullet : removedBullets) {
+            bullets.remove(bullet);
         }
     }
-
     public static ArrayList<Bullet> getBullets() {
         if (bullets.isEmpty()){
             return null;
