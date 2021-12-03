@@ -1,4 +1,5 @@
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Image;
 
 public class SpaceInvaderz {
@@ -30,9 +31,25 @@ public class SpaceInvaderz {
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
         canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas)); // this is causing the error, also caused in Bullet Manager
+<<<<<<< HEAD
 >>>>>>> Stashed changes
         canvas.animate(() -> alienWall.moveY(canvas));
         canvas.animate(() -> alienWall.moveX(canvas));
+=======
+
+
+
+        canvas.animate(() -> {
+        if (alienWall.getAliens().isEmpty()) {
+            endGame(canvas);
+        }
+    });
+    }
+
+    private static void endGame(CanvasWindow canvas) {
+        canvas.removeAll();
+        canvas.add(new GraphicsText("END GAME"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
+>>>>>>> c7fd8f3442c82d807a87adc9a9cd5079448749e8
     }
 
 
@@ -54,8 +71,9 @@ public class SpaceInvaderz {
     public static CanvasWindow getCanvas() {
         return canvas;
     }
+
     public static void main(String[] args) {
         new SpaceInvaderz();
-        
+
     }
 }
