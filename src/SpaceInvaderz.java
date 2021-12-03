@@ -33,7 +33,7 @@ public class SpaceInvaderz {
 
 
         canvas.animate(() -> {
-        if (alienWall.getAliens().isEmpty()) {
+        if (alienWall.getAliens().size() == 21) {
             endGame(canvas);
         }
     });
@@ -43,7 +43,6 @@ public class SpaceInvaderz {
         canvas.removeAll();
         canvas.add(new GraphicsText("END GAME"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
     }
-
 
 
     private void setCanvasBackground() {
