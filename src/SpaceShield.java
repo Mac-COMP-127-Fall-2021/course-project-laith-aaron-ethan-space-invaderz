@@ -1,9 +1,5 @@
-
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Rectangle;
-import java.awt.Color;
-
 
 public class SpaceShield {
     // public static final double WIDTH = 100;

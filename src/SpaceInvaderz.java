@@ -31,7 +31,6 @@ public class SpaceInvaderz {
         canvas.animate(() -> alienWall.moveX(canvas));
 
 
-
         canvas.animate(() -> {
         if (alienWall.getAliens().isEmpty()) {
             endGame(canvas);
@@ -43,8 +42,6 @@ public class SpaceInvaderz {
         canvas.removeAll();
         canvas.add(new GraphicsText("END GAME"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
     }
-
-
 
     private void setCanvasBackground() {
         background = new Image(0, 0, "background2.png");

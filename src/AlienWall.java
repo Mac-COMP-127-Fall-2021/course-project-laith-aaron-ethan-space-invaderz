@@ -7,7 +7,7 @@ public class AlienWall extends GraphicsGroup {
     
     private List<Alien> aliens = new ArrayList<Alien>();
     private double xVelocity = 0.5;
-    private double yVelocity = 0.05;
+    private double yVelocity = 0.1;
 
     public AlienWall(CanvasWindow canvas) {
         super();
@@ -39,9 +39,10 @@ public class AlienWall extends GraphicsGroup {
         this.setY(this.getY() + yVelocity);
     }
     public void moveX(CanvasWindow canvas) {
-        this.setY(this.getY() + yVelocity);
-        if (this.getY() == canvas.getWidth() - 10 || this.getY() == 10){
-            xVelocity = -1 * xVelocity;
+        System.out.println(this.getX());
+        this.setX(this.getX() + xVelocity);
+        if (this.getX() == 80 || this.getX() == -90){
+            this.xVelocity = -1 * xVelocity;
         }
     }
 }
