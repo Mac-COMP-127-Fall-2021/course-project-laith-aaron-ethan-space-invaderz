@@ -9,6 +9,8 @@ public class SpaceInvaderz {
     private static CanvasWindow canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);;
     private static AlienWall alienWall;
     private InteractionManager interactionManager;
+    private SpaceShieldManger spaceShieldManger;
+    private HealthMeter healthMeter;
 
     private static Image background;
 
@@ -16,26 +18,28 @@ public class SpaceInvaderz {
         // this.canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);
         setCanvasBackground();
         SpaceShip spaceShip = new SpaceShip(canvas);
+        spaceShieldManger = new SpaceShieldManger(canvas);
         SpaceShieldManger.generateSpaceShields(canvas);
 
         alienWall = new AlienWall(canvas);
         interactionManager = new InteractionManager();
 
-        HealthMeter healthMeter = new HealthMeter(CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.05, canvas);
+        healthMeter = new HealthMeter(CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.05, canvas);
     
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
-        canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas));
+        canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger));
 
         canvas.animate(() -> alienWall.moveY(canvas));
         canvas.animate(() -> alienWall.moveX(canvas));
-
+        
 
         canvas.animate(() -> {
         if (alienWall.getAliens().size() == 21) {
             endGame(canvas);
         }
     });
+
     }
 
     private static void endGame(CanvasWindow canvas) {
@@ -43,10 +47,6 @@ public class SpaceInvaderz {
         canvas.add(new GraphicsText("END GAME"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0bfaf792d3f754655025fd31459164dcb6891e9e
     private void setCanvasBackground() {
         background = new Image(0, 0, "background2.png");
         canvas.add(background);

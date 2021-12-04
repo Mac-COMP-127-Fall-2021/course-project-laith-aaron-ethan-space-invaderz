@@ -4,7 +4,7 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.CanvasWindow;
 
 public class AlienWall extends GraphicsGroup {
-    
+
     private List<Alien> aliens = new ArrayList<Alien>();
     private double xVelocity = 0.5;
     private double yVelocity = 0.1;
@@ -38,12 +38,20 @@ public class AlienWall extends GraphicsGroup {
     public void moveY(CanvasWindow canvas) {
         this.setY(this.getY() + yVelocity);
     }
+
     public void moveX(CanvasWindow canvas) {
-        System.out.println(this.getX());
         this.setX(this.getX() + xVelocity);
-        if (this.getX() == 80 || this.getX() == -90){
+        if (this.getX() == 80 || this.getX() == -90) {
             this.xVelocity = -1 * xVelocity;
         }
     }
+
+    // public void randomShot(CanvasWindow canvas) {
+    
+    //     for (Alien a : this.getAliens()) {
+    //         a.shoot(canvas, this);
+    //     }
+        
+    
 }
 

@@ -8,16 +8,16 @@ public class Bullet extends Ellipse{
     private double centerY;
     private InteractionManager interactionManager;
 
-    public Bullet(CanvasWindow canvas, AlienWall alienWall) {
+    public Bullet(CanvasWindow canvas, AlienWall alienWall, double centerX, double centerY) {
         super(SpaceShip.getCenterX(), SpaceShip.getCenterY(), BULLET_RADIUS, BULLET_RADIUS * 7);
         this.centerX = SpaceShip.getCenterX();
         this.centerY = SpaceShip.getCenterY();
+        
         this.setFilled(true);
         this.setStroked(false);
         this.setFillColor(new Color(255, 149, 5));
         canvas.add(this, centerX, centerY);
-        interactionManager = new InteractionManager();
-        
+        interactionManager = new InteractionManager(); 
     }
 
     /**
@@ -25,6 +25,12 @@ public class Bullet extends Ellipse{
      */
     public void shoot(){
         double y2 = centerY - 3;
+        centerY = y2;
+        updateYPosition(y2);
+    }
+
+    public void shootDown() {
+        double y2 = centerY + 3;
         centerY = y2;
         updateYPosition(y2);
     }
@@ -44,5 +50,9 @@ public class Bullet extends Ellipse{
 
     public boolean checkIntersection(AlienWall alienWall, CanvasWindow canvas) {
         return interactionManager.alienIntersection(this, alienWall, canvas);
+    }
+
+    public boolean checkShieldIntersection(CanvasWindow canvas, SpaceShieldManger shieldManger) {
+        return interactionManager.sheildIntersection(this, shieldManger, canvas);
     }
 }

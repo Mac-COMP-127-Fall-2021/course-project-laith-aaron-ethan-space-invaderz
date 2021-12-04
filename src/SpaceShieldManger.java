@@ -23,4 +23,8 @@ public class SpaceShieldManger {
         }
     }
 
+    public List<SpaceShield> getShields() {
+        return shields;
+    }
+    
 }
