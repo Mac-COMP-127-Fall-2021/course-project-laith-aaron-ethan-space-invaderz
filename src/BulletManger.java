@@ -15,13 +15,16 @@ public class BulletManger {
         ArrayList<Bullet> removedBullets = new ArrayList<>();
         for (Bullet bullet : bullets) {
             bullet.shoot();
-            if (bullet.checkIntersection(alienWall, canvas)) {
+            if (bullet.checkAlienIntersection(alienWall, canvas)) {
                 removedBullets.add(bullet);
-            if (bullet.checkShieldIntersection(canvas, shieldManger)) {
+            }
+            else if (bullet.checkShieldIntersection(canvas, shieldManger)) {
+                System.out.println("yay");
                 removedBullets.add(bullet);
             }
         }
-    }
+    
+
         for (Bullet bullet : removedBullets) {
             bullets.remove(bullet);
         }

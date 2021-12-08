@@ -11,19 +11,18 @@ public class SpaceInvaderz {
     private InteractionManager interactionManager;
     private SpaceShieldManger spaceShieldManger;
     private HealthMeter healthMeter;
+    private SpaceShip spaceShip;
 
     private static Image background;
 
     public SpaceInvaderz(){
         // this.canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);
         setCanvasBackground();
-        SpaceShip spaceShip = new SpaceShip(canvas);
+        spaceShip = new SpaceShip(canvas);
         spaceShieldManger = new SpaceShieldManger(canvas);
-        SpaceShieldManger.generateSpaceShields(canvas);
-
         alienWall = new AlienWall(canvas);
-        interactionManager = new InteractionManager();
 
+        interactionManager = new InteractionManager();
         healthMeter = new HealthMeter(CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.05, canvas);
     
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
@@ -33,7 +32,6 @@ public class SpaceInvaderz {
         canvas.animate(() -> alienWall.moveY(canvas));
         canvas.animate(() -> alienWall.moveX(canvas));
         
-
         canvas.animate(() -> {
         if (alienWall.getAliens().size() == 21) {
             endGame(canvas);
@@ -50,7 +48,6 @@ public class SpaceInvaderz {
     private void setCanvasBackground() {
         background = new Image(0, 0, "background2.png");
         canvas.add(background);
-        // background.setScale(0.1);
     }
 
     public static int getCanvasWidth() {

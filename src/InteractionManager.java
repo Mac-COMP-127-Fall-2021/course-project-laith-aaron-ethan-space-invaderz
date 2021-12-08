@@ -19,15 +19,20 @@ public class InteractionManager {
     }
 
     public boolean sheildIntersection(Bullet bullet, SpaceShieldManger shieldManger, CanvasWindow canvas) {
-        
         Point bulletPoint = new Point(bullet.getX(), bullet.getY() + bullet.getRadius()+ 1);
-
-        for (SpaceShield shield : shieldManger.getShields()){
+        
+        for (SpaceShield shield : shieldManger.getShields()) {
              if (canvas.getElementAt(bulletPoint) == shield) {
-                canvas.remove(shield);
-                shieldManger.getShields().remove(shield);
-                canvas.remove(bullet);
-                return true;
+                if (shield.getCondition() == 0) {
+                    canvas.remove(shield);
+                    canvas.remove(bullet);
+                    shieldManger.getShields().remove(shield);
+                }
+                else {
+                    canvas.remove(bullet);
+                    shield.damage();
+                }
+                    return true;
              }
         }
         return false;
