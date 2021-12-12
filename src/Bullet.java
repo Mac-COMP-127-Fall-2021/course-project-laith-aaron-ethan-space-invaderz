@@ -21,6 +21,25 @@ public class Bullet extends Ellipse{
     }
 
     /**
+     * Alien bullets
+     * @param canvas
+     * @param alien
+     * @param centerX
+     * @param centerY
+     */
+    public Bullet(CanvasWindow canvas, Alien alien, double centerX, double centerY) {
+        super(centerX, centerY, BULLET_RADIUS, BULLET_RADIUS * 7);
+        this.centerX = alien.getX() + (alien.getX()/2);
+        this.centerY = alien.getY() + 200;
+        
+        this.setFilled(true);
+        this.setStroked(false);
+        this.setFillColor(new Color(127,255,0));
+        canvas.add(this, centerX, centerY);
+        interactionManager = new InteractionManager(); 
+    }
+
+    /**
      * Shoots the bullets from the ship upwards 
      */
     public void shoot(){

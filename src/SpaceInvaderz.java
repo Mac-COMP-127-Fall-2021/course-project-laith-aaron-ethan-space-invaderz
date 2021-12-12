@@ -1,3 +1,6 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Image;
@@ -28,10 +31,13 @@ public class SpaceInvaderz {
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
         canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger));
+        canvas.animate(() -> BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger));
+
 
         canvas.animate(() -> alienWall.moveY(canvas));
         canvas.animate(() -> alienWall.moveX(canvas));
-        
+        canvas.animate(() -> alienWall.alienShoot());
+
         canvas.animate(() -> {
         if (alienWall.getAliens().size() == 21) {
             endGame(canvas);

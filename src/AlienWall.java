@@ -46,12 +46,18 @@ public class AlienWall extends GraphicsGroup {
         }
     }
 
-    // public void randomShot(CanvasWindow canvas) {
-    
-    //     for (Alien a : this.getAliens()) {
-    //         a.shoot(canvas, this);
-    //     }
-        
-    
+    public void alienShoot() {
+        int timePause = getRandomNumber(0,1000);
+        if (timePause < 20 && timePause > 0){
+
+        int alienInd = getRandomNumber(0, aliens.size());
+        aliens.get(alienInd).shoot(getCanvas(), aliens.get(alienInd));
+        }
+    }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
 }
 
