@@ -19,7 +19,6 @@ public class SpaceInvaderz {
     private static Image background;
 
     public SpaceInvaderz(){
-        // this.canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);
         setCanvasBackground();
         spaceShip = new SpaceShip(canvas);
         spaceShieldManger = new SpaceShieldManger(canvas);
@@ -30,13 +29,14 @@ public class SpaceInvaderz {
     
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
-        canvas.animate(() -> BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger));
-        canvas.animate(() -> BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger));
 
-
-        canvas.animate(() -> alienWall.moveY(canvas));
-        canvas.animate(() -> alienWall.moveX(canvas));
-        canvas.animate(() -> alienWall.alienShoot());
+        canvas.animate(() ->{
+            BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger);
+            BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger);
+            alienWall.moveY();
+            alienWall.moveX();
+            alienWall.alienShoot();
+        });
 
         canvas.animate(() -> {
         if (alienWall.getAliens().size() == 21) {

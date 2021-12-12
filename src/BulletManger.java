@@ -9,7 +9,7 @@ public class BulletManger {
 
 
     public static void addShot(CanvasWindow canvas, AlienWall alienWall) {
-        bullets.add(new Bullet(canvas, alienWall, SpaceShip.getCenterX(), SpaceShip.getCenterY()));
+        bullets.add(new Bullet(canvas));
     }
 
     public static void shootBullets(
