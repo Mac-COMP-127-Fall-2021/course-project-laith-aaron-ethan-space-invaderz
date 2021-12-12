@@ -1,4 +1,3 @@
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
 public class SpaceShield extends Image {

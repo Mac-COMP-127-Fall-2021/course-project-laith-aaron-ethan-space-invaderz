@@ -1,6 +1,3 @@
-import java.util.Timer;
-import java.util.TimerTask;
-
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Image;
@@ -46,11 +43,18 @@ public class SpaceInvaderz {
 
     }
 
+    /**
+     * removes everything from canvas and Shows end game screen
+     * @param canvas canvas used to show end screen.
+     */
     private static void endGame(CanvasWindow canvas) {
         canvas.removeAll();
-        canvas.add(new GraphicsText("END GAME"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
+        canvas.add(new GraphicsText("END GAME!"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
     }
 
+    /**
+     * sets canvas background to a photo.
+     */
     private void setCanvasBackground() {
         background = new Image(0, 0, "background2.png");
         canvas.add(background);
