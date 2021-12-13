@@ -41,12 +41,16 @@ public class BulletManger {
         AlienWall alienWall,
         InteractionManager interactionManager,
         CanvasWindow canvas,
-        SpaceShieldManger shieldManger) {
+        SpaceShieldManger shieldManger,
+        SpaceShip ship) {
         ArrayList<Bullet> removedBullets = new ArrayList<>();
         for (Bullet alienBullet : alienBullets) {
             alienBullet.shootDown();
 
             if (alienBullet.checkShieldIntersection(canvas, shieldManger)) {
+                removedBullets.add(alienBullet);
+            }
+            if(alienBullet.checkShipIntersetion(canvas, ship)) {
                 removedBullets.add(alienBullet);
             }
         }

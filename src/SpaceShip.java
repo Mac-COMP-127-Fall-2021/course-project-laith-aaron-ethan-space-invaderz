@@ -5,6 +5,7 @@ import edu.macalester.graphics.Image;
 public class SpaceShip extends Image {
     public static final int WIDTH = 20;
     public static final int HEIGHT = 20;
+    private static int health = 100;
     
     
     public SpaceShip(CanvasWindow canvas) {
@@ -54,5 +55,21 @@ public class SpaceShip extends Image {
             return true;
         }
         return false;
+    }
+
+    /**
+     * returns health points of ship.
+     * @return returns health points of ship.
+     */
+    public static int getHealth() {
+        return health;
+    }
+
+    /**
+     * Damges ship by 20 healthg points.
+     */
+    public void getDamged() {
+        health -= 20;
+        HealthMeter.updateHealthMeter();
     }
 }

@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadFactory;
 
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.CanvasWindow;

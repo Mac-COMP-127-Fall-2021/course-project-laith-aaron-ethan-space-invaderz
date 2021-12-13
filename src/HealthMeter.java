@@ -9,6 +9,8 @@ import edu.macalester.graphics.Rectangle;
 
 public class HealthMeter extends GraphicsObject{
 
+    static Rectangle bar;
+
     /**
      * generates a health meter for the spaceship.
      * @param x x position for health meter.
@@ -16,16 +18,20 @@ public class HealthMeter extends GraphicsObject{
      * @param canvas canvas to add health meter.
      */
     public HealthMeter(double x, double y, CanvasWindow canvas){
-        Rectangle bar = new Rectangle(x, y, 150, 20);
+        bar = new Rectangle(x, y, 100, 20);
         bar.setFillColor(new Color(203, 49, 20));
 
-        Rectangle border = new Rectangle(x, y, 150, 20);
+        Rectangle border = new Rectangle(x, y, 100, 20);
         border.setFilled(false);
         border.setStrokeColor(new Color(52, 206, 235));
         border.setStrokeWidth(3);
 
         canvas.add(bar);
         canvas.add(border);
+    }
+
+    public static void updateHealthMeter(){
+        bar.setSize(SpaceShip.getHealth(),20);
     }
 
     @Override

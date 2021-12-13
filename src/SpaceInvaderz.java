@@ -29,7 +29,7 @@ public class SpaceInvaderz {
 
         canvas.animate(() ->{
             BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
-            BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger);
+            BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
             alienWall.moveY();
             alienWall.moveX();
             alienWall.alienShoot();
