@@ -47,7 +47,7 @@ public class SpaceInvaderz {
      * removes everything from canvas and Shows end game screen
      * @param canvas canvas used to show end screen.
      */
-    private static void endGame(CanvasWindow canvas) {
+    public static void endGame(CanvasWindow canvas) {
         canvas.removeAll();
         canvas.add(new GraphicsText("END GAME!"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
     }

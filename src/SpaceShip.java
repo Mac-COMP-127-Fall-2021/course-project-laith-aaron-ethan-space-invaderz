@@ -69,7 +69,11 @@ public class SpaceShip extends Image {
      * Damges ship by 20 healthg points.
      */
     public void getDamged() {
+        if (health - 20 > 0 ){
         health -= 20;
         HealthMeter.updateHealthMeter();
+        }else if(health - 20 <= 0){
+            SpaceInvaderz.endGame(SpaceInvaderz.getCanvas());
+        }
     }
 }

@@ -18,10 +18,10 @@ public class HealthMeter extends GraphicsObject{
      * @param canvas canvas to add health meter.
      */
     public HealthMeter(double x, double y, CanvasWindow canvas){
-        bar = new Rectangle(x, y, 100, 20);
+        bar = new Rectangle(x, y, SpaceShip.getHealth() * 1.5, 20);
         bar.setFillColor(new Color(203, 49, 20));
 
-        Rectangle border = new Rectangle(x, y, 100, 20);
+        Rectangle border = new Rectangle(x, y, SpaceShip.getHealth() * 1.5, 20);
         border.setFilled(false);
         border.setStrokeColor(new Color(52, 206, 235));
         border.setStrokeWidth(3);
@@ -31,7 +31,7 @@ public class HealthMeter extends GraphicsObject{
     }
 
     public static void updateHealthMeter(){
-        bar.setSize(SpaceShip.getHealth(),20);
+        bar.setSize(SpaceShip.getHealth() * 1.5,20);
     }
 
     @Override
