@@ -1,4 +1,5 @@
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.FontStyle;
 import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Image;
 
@@ -27,30 +28,41 @@ public class SpaceInvaderz {
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall, spaceShip));
 
-        canvas.animate(() ->{
-            BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
-            BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
-            alienWall.moveY();
-            alienWall.moveX();
-            alienWall.alienShoot();
-        });
-
         canvas.animate(() -> {
-        if (alienWall.getAliens().size() == 21) {
-            endGame(canvas);
-        }
-    });
+            if (aliensLeft() && aliensAboveShip() && !shipDestroyed())  {
+                BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
+                BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
+                alienWall.moveY();
+                alienWall.moveX();
+                alienWall.alienShoot();
+            }
+            else if (!aliensLeft()) {
+                endGame(canvas);
+            }
+            else if (!aliensAboveShip()) {
+                endGame(canvas);
+            }
+            else if (shipDestroyed()) {
+                endGame(canvas);
+            }
 
+        });
     }
+
+       
+        
 
     /**
      * removes everything from canvas and Shows end game screen
      * @param canvas canvas used to show end screen.
      */
     public static void endGame(CanvasWindow canvas) {
-        canvas.removeAll();
-        canvas.add(new GraphicsText("END GAME!"), CANVAS_WIDTH * 0.40, CANVAS_HEIGHT / 2);
+        //canvas.removeAll();
+        GraphicsText endGame = new GraphicsText("END GAME!", CANVAS_WIDTH * 0.425, CANVAS_HEIGHT / 2);
+        endGame.setFont(FontStyle.BOLD, 30);
+        canvas.add(endGame);
     }
+    
 
     /**
      * sets canvas background to a photo.
@@ -74,6 +86,29 @@ public class SpaceInvaderz {
 
     public static void main(String[] args) {
         new SpaceInvaderz();
+    }
+
+    public boolean aliensAboveShip() {
+        for (Alien alien : alienWall.getAliens()) {
+            if ((alien.getY() - alien.getHeight()/2) < spaceShip.getCenterY()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean aliensLeft() {
+        if (alienWall.getAliens().size() > 21) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean shipDestroyed() {
+        if (SpaceShip.getHealth() - 20 <= 0)  {
+            return true;
+        }
+        return false;
     }
 
 }

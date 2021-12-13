@@ -8,7 +8,7 @@ public class AlienWall extends GraphicsGroup {
 
     private List<Alien> aliens = new ArrayList<Alien>();
     private double xVelocity = 0.5;
-    private double yVelocity = 0.1;
+    private double yVelocity = 0.15;
 
     public AlienWall(CanvasWindow canvas) {
         super();
