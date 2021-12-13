@@ -2,18 +2,16 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
 
-public class SpaceShip {
+public class SpaceShip extends Image {
     public static final int WIDTH = 20;
     public static final int HEIGHT = 20;
     
-    private static Image spaceShipImage;
-
+    
     public SpaceShip(CanvasWindow canvas) {
-
-        spaceShipImage = new Image(0, 0, "spaceShipImage.png");
-        spaceShipImage.setScale(0.15);
-        updateCenter(spaceShipImage, SpaceInvaderz.getCanvasWidth() / 2, SpaceInvaderz.getCanvasHeight() * 0.9);
-        canvas.add(spaceShipImage);
+        super(0, 0, "spaceShipImage.png");
+        this.setScale(0.15);
+        updateCenter(SpaceInvaderz.getCanvasWidth() / 2, SpaceInvaderz.getCanvasHeight() * 0.9);
+        canvas.add(this);
     }
 
     /**
@@ -23,8 +21,8 @@ public class SpaceShip {
      * @param x new x value.
      * @param y new y value.
      */
-    private void updateCenter(Image spaceShipImage, double x, double y) {
-        spaceShipImage.setCenter(x, y);
+    private void updateCenter(double x, double y) {
+        this.setCenter(x, y);
     }
 
     /**
@@ -34,17 +32,16 @@ public class SpaceShip {
      */
     public void updateX(double x) {
         if (getCenterX() > 0 + WIDTH / 2) {
-            updateCenter(spaceShipImage, x, SpaceInvaderz.getCanvasHeight() * 0.9);
+            updateCenter(x, SpaceInvaderz.getCanvasHeight() * 0.9);
         }
     }
 
-
-    public static double getCenterX() {
-        return spaceShipImage.getCenter().getX();
+    public double getCenterX() {
+        return this.getX() + this.getWidth()/2;
     }
 
-    public static double getCenterY() {
-        return spaceShipImage.getCenter().getY();
+    public double getCenterY() {
+        return this.getY() + this.getHeight()/2;
     }
 
     /**

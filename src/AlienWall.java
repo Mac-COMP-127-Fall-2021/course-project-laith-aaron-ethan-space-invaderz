@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadFactory;
+
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.CanvasWindow;
 
@@ -70,12 +72,13 @@ public class AlienWall extends GraphicsGroup {
      * Generates a shot from a random alien
      */
     public void alienShoot() {
+        
         int timePause = getRandomNumber(0, 1000); // Used as timepause by making it animate the random function and not
                                                   // executing always.
         if (timePause < 20 && timePause > 0) {
 
             int alienInd = getRandomNumber(0, aliens.size());
-            aliens.get(alienInd).shoot(getCanvas(), aliens.get(alienInd));
+            aliens.get(alienInd).shoot(getCanvas());
         }
     }
 

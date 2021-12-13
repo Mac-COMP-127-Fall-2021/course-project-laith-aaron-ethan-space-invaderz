@@ -8,27 +8,29 @@ public class BulletManger {
     static ArrayList<Bullet> alienBullets = new ArrayList<Bullet>();
 
 
-    public static void addShot(CanvasWindow canvas, AlienWall alienWall) {
-        bullets.add(new Bullet(canvas));
+    public static void addShot(CanvasWindow canvas, AlienWall alienWall, SpaceShip spaceShip) {
+        bullets.add(new Bullet(canvas, spaceShip));
     }
 
     public static void shootBullets(
         AlienWall alienWall,
         InteractionManager interactionManager,
         CanvasWindow canvas,
-        SpaceShieldManger shieldManger) {
+        SpaceShieldManger shieldManger,
+        SpaceShip ship) {
         ArrayList<Bullet> removedBullets = new ArrayList<>();
         for (Bullet bullet : bullets) {
             bullet.shoot();
             if (bullet.checkAlienIntersection(alienWall, canvas)) {
                 removedBullets.add(bullet);
-            } else if (bullet.checkShieldIntersection(canvas, shieldManger)) {
-                System.out.println("yay");
+            } 
+            else if (bullet.checkShieldIntersection(canvas, shieldManger)) {
+                removedBullets.add(bullet);
+            }
+            else if (bullet.checkShipIntersetion(canvas, ship)) {
                 removedBullets.add(bullet);
             }
         }
-
-
         for (Bullet bullet : removedBullets) {
             bullets.remove(bullet);
         }
@@ -45,7 +47,6 @@ public class BulletManger {
             alienBullet.shootDown();
 
             if (alienBullet.checkShieldIntersection(canvas, shieldManger)) {
-                System.out.println("yay");
                 removedBullets.add(alienBullet);
             }
         }

@@ -25,10 +25,10 @@ public class SpaceInvaderz {
         healthMeter = new HealthMeter(CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.05, canvas);
     
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
-        canvas.onClick(event -> BulletManger.addShot(canvas, alienWall));
+        canvas.onClick(event -> BulletManger.addShot(canvas, alienWall, spaceShip));
 
         canvas.animate(() ->{
-            BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger);
+            BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
             BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger);
             alienWall.moveY();
             alienWall.moveX();
@@ -74,6 +74,6 @@ public class SpaceInvaderz {
 
     public static void main(String[] args) {
         new SpaceInvaderz();
-
     }
+
 }

@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
 
@@ -37,5 +39,17 @@ public class InteractionManager {
         }
         return false;
     }
+
+    public boolean spaceShipInteraction(Bullet bullet, SpaceShip ship, CanvasWindow canvas) {
+            Point bulletBottom = new Point(bullet.getX(), bullet.getY() - bullet.getRadius() + 1);
+            if (canvas.getElementAt(bulletBottom) == ship) {
+                canvas.remove(ship);
+                canvas.remove(bullet);
+                return true;
+            }
+    
+        return false;
+    }
+
 }
 
