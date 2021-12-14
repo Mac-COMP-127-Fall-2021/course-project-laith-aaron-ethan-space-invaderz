@@ -8,7 +8,7 @@ public class AlienWall extends GraphicsGroup {
 
     private List<Alien> aliens = new ArrayList<Alien>();
     private double xVelocity = 0.5;
-    private double yVelocity = 0.15;
+    private double yVelocity = 0.4;
 
     public AlienWall(CanvasWindow canvas) {
         super();
@@ -73,7 +73,7 @@ public class AlienWall extends GraphicsGroup {
     public void alienShoot() {
         
         int timePause = getRandomNumber(0, 1000); // Used as timepause by making it animate the random function and not
-                                                  // executing always.
+                                                // executing always.
         if (timePause < 20 && timePause > 0) {
 
             int alienInd = getRandomNumber(0, aliens.size());
