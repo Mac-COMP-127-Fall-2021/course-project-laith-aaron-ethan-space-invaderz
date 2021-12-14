@@ -8,7 +8,8 @@ public class AlienWall extends GraphicsGroup {
 
     private List<Alien> aliens = new ArrayList<Alien>();
     private double xVelocity = 0.5;
-    private double yVelocity = 0.4;
+    private double yVelocity = 0.2;
+    public double yDispl = 50;
 
     public AlienWall(CanvasWindow canvas) {
         super();
@@ -55,6 +56,7 @@ public class AlienWall extends GraphicsGroup {
      */
     public void moveY() {
         this.setY(this.getY() + yVelocity);
+        yDispl += yVelocity;
     }
 
     /**
@@ -77,7 +79,7 @@ public class AlienWall extends GraphicsGroup {
         if (timePause < 20 && timePause > 0) {
 
             int alienInd = getRandomNumber(0, aliens.size());
-            aliens.get(alienInd).shoot(getCanvas());
+            aliens.get(alienInd).shoot(getCanvas(), this);
         }
     }
 
@@ -90,6 +92,10 @@ public class AlienWall extends GraphicsGroup {
      */
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    public double getyDispl() {
+        return yDispl;
     }
 }
 

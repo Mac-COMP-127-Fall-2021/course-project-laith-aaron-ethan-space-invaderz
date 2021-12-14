@@ -1,9 +1,10 @@
 
+import java.awt.Color;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.FontStyle;
 import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Image;
-
 
 public class SpaceInvaderz {
 
@@ -11,66 +12,62 @@ public class SpaceInvaderz {
     private static final int CANVAS_HEIGHT = 600;
     private static CanvasWindow canvas = new CanvasWindow("Space Invaderz!!!", CANVAS_WIDTH, CANVAS_HEIGHT);;
     private static AlienWall alienWall;
-    private InteractionManager interactionManager;
-    private SpaceShieldManger spaceShieldManger;
-    private HealthMeter healthMeter;
-    private SpaceShip spaceShip;
+    private static InteractionManager interactionManager;
+    private static SpaceShieldManger spaceShieldManger;
+    private static HealthMeter healthMeter;
+    private static SpaceShip spaceShip;
 
     private static Image background;
 
-    public SpaceInvaderz(){  
-        if (canvas.getElementAt(300,200) == alienWall) {
-            canvas.removeAll();
-        }
+    public SpaceInvaderz() {  
+
         setCanvasBackground();
         spaceShip = new SpaceShip(canvas);
         spaceShieldManger = new SpaceShieldManger(canvas);
         alienWall = new AlienWall(canvas);
-        
         interactionManager = new InteractionManager();
         healthMeter = new HealthMeter(CANVAS_WIDTH * 0.75, CANVAS_HEIGHT * 0.05, canvas);
     
+    }
+
+    public void runGame() {
+
         canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall, spaceShip));
 
         canvas.animate(() -> {
-            if (aliensLeft() && !shipDestroyed() && !aliensAtShip())  {
+            if (aliensLeft() && !shipDestroyed() && !aliensAtShip()) {
                 BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
                 BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
                 alienWall.moveY();
                 alienWall.moveX();
                 alienWall.alienShoot();
-                aliensAtShip();
             }
             else if (!aliensLeft()) {
-                endGame(canvas);
+                endGame(canvas, "You Won!");
             }
             else if (shipDestroyed()) {
-                endGame(canvas);
+                endGame(canvas, "Your ship got destroyed, You Lose!");
             }
             else if (aliensAtShip()) {
-                endGame(canvas);
+                endGame(canvas, "This Aliens are invading, You Lose!");
             }
 
         });
     }
 
-    
     /**
      * removes everything from canvas and Shows end game screen
      * @param canvas canvas used to show end screen.
      */
-    public static void endGame(CanvasWindow canvas) {
+    public static void endGame(CanvasWindow canvas, String wonOrLossed) {
         //canvas.removeAll();
-        GraphicsText endGame = new GraphicsText("END GAME! press key to play again, click to quit!", CANVAS_WIDTH * 0.425, CANVAS_HEIGHT / 2);
-       
-        endGame.setFont(FontStyle.BOLD, 30);
+        GraphicsText endGame = new GraphicsText(wonOrLossed + " Press any key to quit", CANVAS_WIDTH * 0.15, CANVAS_HEIGHT / 2);
+        endGame.setFont(FontStyle.BOLD, 24);
         canvas.add(endGame);
-        canvas.onKeyDown(event -> resetGame());
-        canvas.onClick(event -> System.exit(0));
-        
+        canvas.onKeyDown(event -> System.exit(0));
+        endGame.setFillColor(Color.white);
     }
-
 
     /**
      * sets canvas background to a photo.
@@ -94,13 +91,7 @@ public class SpaceInvaderz {
 
     public static void main(String[] args) {
         SpaceInvaderz sp = new SpaceInvaderz();
-    }
-
-    public static void resetGame() {
-        if (canvas != null){
-            canvas.removeAll();
-            new SpaceInvaderz();
-        }
+        sp.runGame();
     }
 
     public boolean aliensAtShip() {

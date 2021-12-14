@@ -36,11 +36,11 @@ public class Bullet extends Ellipse {
      * @param centerX
      * @param centerY
      */
-    public Bullet(CanvasWindow canvas, Alien alien, double centerX, double centerY) {
+    public Bullet(CanvasWindow canvas, Alien alien, double centerX, double centerY, AlienWall alienWall) {
 
         super(centerX, centerY, BULLET_RADIUS, BULLET_RADIUS * 7);
-        this.centerX = alien.getX() + (alien.getX() / 2);
-        this.centerY = alien.getY() + 200;
+        this.centerX = alien.getX();
+        this.centerY = alien.getY() + alienWall.getyDispl() * 1.7;
 
         this.setFilled(true);
         this.setStroked(false);

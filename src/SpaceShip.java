@@ -73,8 +73,10 @@ public class SpaceShip extends Image {
             health -= 20;
             HealthMeter.updateHealthMeter();
         }
-        else if (health - 20 <= 0) {
-            SpaceInvaderz.endGame(SpaceInvaderz.getCanvas());
+        else if (health <= 0) {
+            health -= 20;
+            HealthMeter.updateHealthMeter();
+            
         }
     }
 }
