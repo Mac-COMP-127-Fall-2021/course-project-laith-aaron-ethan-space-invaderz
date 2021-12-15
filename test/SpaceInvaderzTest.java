@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
 
-class UnitTests {
+public class SpaceInvaderzTest {
     // ------ Setup ------
 
     CanvasWindow canvas;
