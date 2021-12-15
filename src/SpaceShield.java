@@ -1,8 +1,9 @@
+//Authors: Laith, Ethan, Aaron.
+//Class description: Class that reprsents the space shield , and extending image class.
+
 import edu.macalester.graphics.Image;
 
 public class SpaceShield extends Image {
-    // public static final double WIDTH = 100;
-    // public static final double HEIGHT = 30;
     private int condition = 3;
     
     public SpaceShield() {

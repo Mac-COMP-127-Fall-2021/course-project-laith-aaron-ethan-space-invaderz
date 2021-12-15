@@ -1,6 +1,7 @@
+//Authors: Laith, Ethan, Aaron.
+//Class Desctription: class representing the space ship, which extends the image class.
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
-
 
 public class SpaceShip extends Image {
     public static final int WIDTH = 20;

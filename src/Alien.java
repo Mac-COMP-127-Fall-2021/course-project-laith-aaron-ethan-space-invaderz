@@ -1,3 +1,5 @@
+//Authors: Laith, Ethan, Aaron.
+//Class Description: Class that creates each indvidual alien image, with alien methods like shoot.
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 

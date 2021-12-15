@@ -1,3 +1,5 @@
+//Authors: Laith, Ethan, Aaron.
+//Class Description: Class respresenting a bullet, which extends ellipse.
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 import java.awt.Color;

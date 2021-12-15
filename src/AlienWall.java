@@ -1,3 +1,5 @@
+//Authors: Laith, Ethan, and Aaron
+//Class: Class that extends GraphicsGroup, and holds many aliens.
 import java.util.ArrayList;
 import java.util.List;
 
