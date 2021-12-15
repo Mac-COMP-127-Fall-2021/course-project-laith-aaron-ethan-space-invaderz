@@ -62,7 +62,8 @@ public class SpaceInvaderz {
      */
     public static void endGame(CanvasWindow canvas, String wonOrLossed) {
         //canvas.removeAll();
-        GraphicsText endGame = new GraphicsText(wonOrLossed + " Press any key to quit", CANVAS_WIDTH * 0.15, CANVAS_HEIGHT / 2);
+        GraphicsText endGame = new GraphicsText(wonOrLossed + " Press any key on keyboard to quit", 0,0);
+        endGame.setCenter((CANVAS_WIDTH/2) - (endGame.getWidth()/2) + 5, CANVAS_HEIGHT/2);
         endGame.setFont(FontStyle.BOLD, 24);
         canvas.add(endGame);
         canvas.onKeyDown(event -> System.exit(0));
@@ -112,7 +113,7 @@ public class SpaceInvaderz {
     }
 
     public boolean shipDestroyed() {
-        if (SpaceShip.getHealth() - 20 <= 0)  {
+        if (SpaceShip.getHealth() <= 0)  {
             return true;
         }
         return false;

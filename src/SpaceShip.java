@@ -73,7 +73,7 @@ public class SpaceShip extends Image {
             health -= 20;
             HealthMeter.updateHealthMeter();
         }
-        else if (health <= 0) {
+        else {
             health -= 20;
             HealthMeter.updateHealthMeter();
             
