@@ -6,12 +6,19 @@ import edu.macalester.graphics.CanvasWindow;
 
 public class BulletManger {
 
-    private static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    private static ArrayList<Bullet> playerBullets = new ArrayList<Bullet>(); // list of player's bullets
     static ArrayList<Bullet> alienBullets = new ArrayList<Bullet>();
 
+    /**
+     * Adds a bullet to canvas
+     * @param canvas
+     * @param alienWall
+     * @param spaceShip
+     */
     public static void addShot(CanvasWindow canvas, AlienWall alienWall, SpaceShip spaceShip) {
-        bullets.add(new Bullet(canvas, spaceShip));
+        playerBullets.add(new Bullet(canvas, spaceShip));
     }
+
     /**
      * checks for bullet intersection and if there is, adds bullets to removed bullets.
      * @param alienWall
@@ -26,35 +33,34 @@ public class BulletManger {
         CanvasWindow canvas,
         SpaceShieldManger shieldManger,
         SpaceShip ship) {
-        ArrayList<Bullet> removedBullets = new ArrayList<>();
-        for (Bullet bullet : bullets) {
+        ArrayList<Bullet> bulletsToRemove = new ArrayList<>(); // list of bullets to be removed
+
+        for (Bullet bullet : playerBullets) {
             bullet.shoot();
             if (bullet.checkAlienIntersection(alienWall, canvas)) {
-                removedBullets.add(bullet);
+                bulletsToRemove.add(bullet);
             } 
             else if (bullet.checkShieldIntersection(canvas, shieldManger)) {
-                removedBullets.add(bullet);
+                bulletsToRemove.add(bullet);
             }
             else if (bullet.checkShipIntersetion(canvas, ship)) {
-                removedBullets.add(bullet);
+                bulletsToRemove.add(bullet);
             }
         }
-        for (Bullet bullet : removedBullets) {
-            bullets.remove(bullet);
+        for (Bullet bullet : bulletsToRemove) {
+            playerBullets.remove(bullet);
         }
     }
 
     /**
      * Checks if alien bullets after intersected anything, and if so, adds them to removed bullets.
-     * @param alienWall
-     * @param interactionManager
-     * @param canvas
-     * @param shieldManger
-     * @param ship
+     * @param alienWall alien wall to check interaction with.
+     * @param canvas canvas on which to check interaction.
+     * @param shieldManger manages the interaction between shield and bullet.
+     * @param ship player's ship to test interaction with.
      */
     public static void shootAlienBullets(
         AlienWall alienWall,
-        InteractionManager interactionManager,
         CanvasWindow canvas,
         SpaceShieldManger shieldManger,
         SpaceShip ship) {
@@ -62,24 +68,24 @@ public class BulletManger {
         for (Bullet alienBullet : alienBullets) {
             alienBullet.shootDown();
 
-            if (alienBullet.checkShieldIntersection(canvas, shieldManger)) {
-                removedBullets.add(alienBullet);
+            if (alienBullet.checkShieldIntersection(canvas, shieldManger)) { // tests if there is interaction between shield  and bullet.
+                removedBullets.add(alienBullet); // adds bullets to the list of bullets that should be removed.
             }
-            if (alienBullet.checkShipIntersetion(canvas, ship)) {
-                removedBullets.add(alienBullet);
+            if (alienBullet.checkShipIntersetion(canvas, ship)) {  // tests if there is interaction between ship and bullet.
+                removedBullets.add(alienBullet); // adds bullets to the list of bullets that should be removed.
             }
         }
-        for (Bullet alienBullet : removedBullets) {
-            bullets.remove(alienBullet);
+        for (Bullet alienBullet : removedBullets) {  // removes bullets that exist in the removedBullets list
+            playerBullets.remove(alienBullet);
             alienBullets.remove(alienBullet);
         }
     }
 
     public static ArrayList<Bullet> getBullets() {
-        if (bullets.isEmpty()) {
+        if (playerBullets.isEmpty()) {
             return null;
         } else {
-            return bullets;
+            return playerBullets;
         }
     }
 

@@ -41,7 +41,7 @@ public class SpaceInvaderz {
         canvas.animate(() -> {
             if (aliensLeft() && !shipDestroyed() && !aliensAtShip()) {
                 BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
-                BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip); // randomly shoots bullets from aliens with delay
+                BulletManger.shootAlienBullets(alienWall, canvas, spaceShieldManger, spaceShip); // randomly shoots bullets from aliens with delay
                 alienWall.moveY(); // slowly moves alien wall in Y direction closer to the player's spaceship.
                 alienWall.moveX(); // slowly moves alien wall in X direction.
                 alienWall.alienShoot();

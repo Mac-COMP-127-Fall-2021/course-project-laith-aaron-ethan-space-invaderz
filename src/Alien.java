@@ -7,7 +7,7 @@ public class Alien extends Image {
 
     public Alien() {
         super(0, 0, "alienSpaceShip.jpg");
-        this.setScale(0.15);
+        this.setScale(0.15); // changes image size
     }
 
     /**
@@ -24,7 +24,6 @@ public class Alien extends Image {
      * @param canvas canvas to add bullet to.
      * @param alien alien to shoot the bullet.
      */
-
     public void shoot(CanvasWindow canvas, AlienWall alienWall) {
         Bullet bullet = new Bullet(canvas, this, this.getCenter().getX(), this.getCenter().getY(), alienWall);
         BulletManger.alienBullets.add(bullet);

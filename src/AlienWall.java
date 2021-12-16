@@ -11,11 +11,11 @@ public class AlienWall extends GraphicsGroup {
     private List<Alien> aliens = new ArrayList<Alien>();
     private double xVelocity = 0.5;
     private double yVelocity = 0.2;
-    public double yDispl = 50;
+    public double yDisplacement = 50;
 
     public AlienWall(CanvasWindow canvas) {
         super();
-        generateAlienWall();
+        generateAlienWall(); // creates wall of aliens
         canvas.add(this);
     }
 
@@ -25,28 +25,26 @@ public class AlienWall extends GraphicsGroup {
     private void generateAlienWall() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 7; j++) {
-                createAlienRow(i, j);
+                createAlienRow(i, j); // creates a row of aliens and adds it to the wall
             }
         }
     }
 
     /**
      * Creates a row of aliens.
-     * 
      * @param i
      * @param j
      */
     private void createAlienRow(int i, int j) {
         Alien alien = new Alien();
         aliens.add(alien);
-        alien.updatePosition(((alien.getImageWidth() * 0.15) * j) - 200, ((alien.getImageHeight() * 0.15) * i) - 50);
+        alien.updatePosition(((alien.getImageWidth() * 0.15) * j) - 200, ((alien.getImageHeight() * 0.15) * i) - 50); // sets alien to a certain position in the row
         aliens.add(alien);
         this.add(alien);
     }
 
     /**
      * returns aliens list.
-     * 
      * @return aliens list.
      */
     public List<Alien> getAliens() {
@@ -57,8 +55,8 @@ public class AlienWall extends GraphicsGroup {
      * moves alien wall in the Y plane.
      */
     public void moveY() {
-        this.setY(this.getY() + yVelocity);
-        yDispl += yVelocity;
+        this.setY(this.getY() + yVelocity); // moves wall by value of yVelocity.
+        yDisplacement += yVelocity; // Adds change in alienWall Y distance to Y displacement.
     }
 
     /**
@@ -75,13 +73,10 @@ public class AlienWall extends GraphicsGroup {
      * Generates a shot from a random alien
      */
     public void alienShoot() {
-        
-        int timePause = getRandomNumber(0, 1000); // Used as timepause by making it animate the random function and not
-                                                // executing always.
-        if (timePause < 20 && timePause > 0) {
-
-            int alienInd = getRandomNumber(0, aliens.size());
-            aliens.get(alienInd).shoot(getCanvas(), this);
+        int timePause = getRandomNumber(0, 1000); // returns a random number between 0 and 1000.
+        if (timePause <= 20 && timePause >= 0) { // shoots if random number is between 0 and 20.
+            int alienInd = getRandomNumber(0, aliens.size()); // chooses random alien.
+            aliens.get(alienInd).shoot(getCanvas(), this); // makes the radom alien shoot.
         }
     }
 
@@ -93,11 +88,19 @@ public class AlienWall extends GraphicsGroup {
      * @return
      */
     public int getRandomNumber(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
+        /* help from
+        https://www.baeldung.com/java-generating-random-numbers-in-range
+        */
+        return (int) ((Math.random() * (max - min)) + min); 
     }
 
-    public double getyDispl() {
-        return yDispl;
+
+    /**
+     * returns Y displacement of the wall since start of the game.
+     * @return
+     */
+    public double getYDisplacement() {
+        return yDisplacement;
     }
 }
 

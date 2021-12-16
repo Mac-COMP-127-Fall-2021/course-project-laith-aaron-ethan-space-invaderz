@@ -17,7 +17,6 @@ public class Bullet extends Ellipse {
      * @param centerX
      * @param centerY
      */
-
     public Bullet(CanvasWindow canvas, SpaceShip spaceShip) {
         super(spaceShip.getCenterX(), spaceShip.getCenterY(), BULLET_RADIUS, BULLET_RADIUS * 7);
         this.centerX = spaceShip.getCenterX() - 2;
@@ -39,10 +38,9 @@ public class Bullet extends Ellipse {
      * @param centerY
      */
     public Bullet(CanvasWindow canvas, Alien alien, double centerX, double centerY, AlienWall alienWall) {
-
         super(centerX, centerY, BULLET_RADIUS, BULLET_RADIUS * 7);
         this.centerX = alien.getX();
-        this.centerY = alien.getY() + alienWall.getyDispl() * 1.7;
+        this.centerY = alien.getY() + alienWall.getYDisplacement() * 1.7;
 
         this.setFilled(true);
         this.setStroked(false);
@@ -52,16 +50,12 @@ public class Bullet extends Ellipse {
     }
 
     /**
-     * Shoots the bullets upwards
+     * Shoots the bullets upwards towards alien wall.
      */
     public void shoot() {
         double y2 = centerY - yVelocity;
         centerY = y2;
         updateYPosition(y2);
-    }
-
-    public double getYVelocity() {
-        return yVelocity;
     }
 
     /**
@@ -91,6 +85,14 @@ public class Bullet extends Ellipse {
     }
 
     /**
+     * Returns speed at which wall moves towards player's space ship.
+     * @return y Velocity of the wall.
+     */
+    public double getYVelocity() {
+        return yVelocity;
+    }
+
+    /**
      * checks for interaction between bullet and aliens.
      * 
      * @param alienWall group of aliens to check interaction with.
@@ -103,7 +105,6 @@ public class Bullet extends Ellipse {
 
     /**
      * checks for interaction between bullet and shields.
-     * 
      * @param canvas       canvas on which bullet is on.
      * @param shieldManger shields to check interaction with.
      * @return boolean: true if bullet and shield intersect.
@@ -112,6 +113,12 @@ public class Bullet extends Ellipse {
         return interactionManager.sheildIntersection(this, shieldManger, canvas);
     }
 
+    /**
+     * checks for interaction between bullet and player's spaceship.
+     * @param canvas canvas on which to test interaction.
+     * @param ship player's ship.
+     * @return boolean: true if bullet and space ship intersect.
+     */
     public boolean checkShipIntersetion(CanvasWindow canvas, SpaceShip ship) {
         return interactionManager.spaceShipInteraction(this, ship, canvas);
     }

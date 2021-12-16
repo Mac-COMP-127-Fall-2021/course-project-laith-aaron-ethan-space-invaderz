@@ -38,17 +38,24 @@ public class SpaceShip extends Image {
         }
     }
 
+    /**
+     * returns center X position
+     * @return center X position
+     */
     public double getCenterX() {
         return this.getX() + this.getWidth()/2;
     }
 
+    /**
+     * returns center Y position
+     * @return center Y position
+     */
     public double getCenterY() {
         return this.getY() + this.getHeight()/2;
     }
 
     /**
      * Checks if spaceShip is in bounds.
-     * 
      * @return true if in bounds, false if not.
      */
     public boolean ifInBounds() {
@@ -70,14 +77,7 @@ public class SpaceShip extends Image {
      * Damges ship by 20 health points.
      */
     public void getDamged() {
-        if (health - 20 > 0 ){
             health -= 20;
-            HealthMeter.updateHealthMeter();
-        }
-        else {
-            health -= 20;
-            HealthMeter.updateHealthMeter();
-            
-        }
+            HealthMeter.updateHealthMeter(); 
     }
 }
