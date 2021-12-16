@@ -1,11 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.Point;
 
 public class SpaceInvaderzTest {
     // ------ Setup ------

@@ -8,7 +8,7 @@ public class SpaceShield extends Image {
     
     public SpaceShield() {
         super(0, 0, "shield2.png");
-        this.setScale(0.3);
+        this.setScale(0.3);  // changes size of space shield
     }
 
     public int getCondition() {

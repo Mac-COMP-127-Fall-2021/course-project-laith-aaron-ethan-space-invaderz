@@ -23,7 +23,7 @@ public class SpaceInvaderz {
     * initializes all of the objects on the canvas.
     */
     public SpaceInvaderz() {
-        setCanvasBackground();
+        setCanvasBackground();  // sets canvas background image.
         spaceShip = new SpaceShip(canvas);
         spaceShieldManger = new SpaceShieldManger(canvas);
         alienWall = new AlienWall(canvas);
@@ -32,32 +32,32 @@ public class SpaceInvaderz {
     }
 
     /**
-     * takes user input and animates the objects
+     * Starts game. Animates objects on the screen and scans users interaction.
      */
     public void runGame() {
-        canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));
-        canvas.onClick(event -> BulletManger.addShot(canvas, alienWall, spaceShip));
+        canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));  // Moves user's space ship on mouse move in X plane 
+        canvas.onClick(event -> BulletManger.addShot(canvas, alienWall, spaceShip)); // shoots bullets on mouse click
 
         canvas.animate(() -> {
             if (aliensLeft() && !shipDestroyed() && !aliensAtShip()) {
                 BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
-                BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
-                alienWall.moveY();
-                alienWall.moveX();
+                BulletManger.shootAlienBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip); // randomly shoots bullets from aliens with delay
+                alienWall.moveY(); // slowly moves alien wall in Y direction closer to the player's spaceship.
+                alienWall.moveX(); // slowly moves alien wall in X direction.
                 alienWall.alienShoot();
             } else if (!aliensLeft()) {
-                endGame(canvas, "The aliens are dead, You Won!");
+                endGame(canvas, "The aliens are dead, You Won!");  // shows end game message when player destroys all aliens
             } else if (shipDestroyed()) {
-                endGame(canvas, "Ship is destroyed, You Lose!");
+                endGame(canvas, "Ship is destroyed, You Lose!");  // shows end game message when player's ship is destroyed
             } else if (aliensAtShip()) {
-                endGame(canvas, "This Aliens are here, You Lose!");
+                endGame(canvas, "This Aliens are here, You Lose!");  // shows end game message when aliens reach space ship
             }
 
         });
     }
 
     /**
-     * removes everything from canvas and Shows end game screen
+     * Shows end game text on top of game screen
      * 
      * @param canvas canvas used to show end screen.
      */
@@ -67,7 +67,7 @@ public class SpaceInvaderz {
         endGame.setCenter((CANVAS_WIDTH / 2) - (endGame.getWidth() / 2) + 5, CANVAS_HEIGHT / 2);
         endGame.setFont(FontStyle.BOLD, 24);
         canvas.add(endGame);
-        canvas.onKeyDown(event -> System.exit(0));
+        canvas.onKeyDown(event -> System.exit(0)); // Exits game on keyboard click after game ends
         endGame.setFillColor(Color.white);
     }
 
@@ -95,9 +95,10 @@ public class SpaceInvaderz {
         SpaceInvaderz sp = new SpaceInvaderz();
         sp.runGame();
     }
+
     /**
-     * checks to see if aliens have reach bottom of screen.
-     * @return
+     * checks to see if aliens have reach player's ship.
+     * @return boolean: true if alien's reached.
      */
     public boolean aliensAtShip() {
         for (Alien a : alienWall.getAliens()) {
@@ -108,9 +109,10 @@ public class SpaceInvaderz {
         }
         return false;
     }
+
     /**
      * checks if any aliens are left
-     * @return
+     * @return boolean: true if there aliens left. flase is aliens are dead.
      */
     public boolean aliensLeft() {
         if (alienWall.getAliens().size() > 21) {
@@ -120,7 +122,7 @@ public class SpaceInvaderz {
     }
     /**
      * checks if ship has been destroyed
-     * @return
+     * @return true if ship is dead. false if ship is alive.
      */
     public boolean shipDestroyed() {
         if (SpaceShip.getHealth() <= 0) {

@@ -11,7 +11,7 @@ public class SpaceShip extends Image {
     
     public SpaceShip(CanvasWindow canvas) {
         super(0, 0, "spaceShipImage.png");
-        this.setScale(0.15);
+        this.setScale(0.15); // changes size of space ship.
         updateCenter(SpaceInvaderz.getCanvasWidth() / 2, SpaceInvaderz.getCanvasHeight() * 0.9);
         canvas.add(this);
     }
