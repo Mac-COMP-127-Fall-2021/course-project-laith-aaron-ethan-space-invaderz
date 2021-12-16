@@ -28,7 +28,7 @@ public class Alien extends Image {
      * @param alien  alien to shoot the bullet.
      */
     public void shoot(CanvasWindow canvas, AlienWall alienWall) {
-        Bullet bullet = new Bullet(canvas, this, this.getCenter().getX(), this.getCenter().getY(), alienWall);
+        Bullet bullet = new Bullet(canvas, this, this.getCenter().getX() + alienWall.getX(), this.getCenter().getY() + alienWall.getY(), alienWall);
         BulletManger.alienBullets.add(bullet);
         bullet.shootDown();
     }
