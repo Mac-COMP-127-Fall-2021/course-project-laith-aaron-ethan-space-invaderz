@@ -13,7 +13,7 @@ public class SpaceInvaderzTest {
     CanvasWindow canvas;
 
     @Test
-    public void testShield() {
+    public void testShieldDamageLogic() {
         SpaceShield spaceShield = new SpaceShield();
         spaceShield.damage();
         int newCondition = 2;
@@ -22,13 +22,13 @@ public class SpaceInvaderzTest {
 
     @Test
     public void testAlienLogic() {
+        canvas = new CanvasWindow("Canvas", 500, 500);
         InteractionManager interactionManager = new InteractionManager();
         SpaceShip spaceShip = new SpaceShip(canvas);
         Bullet bullet = new Bullet(canvas, spaceShip);
-        Point bulletTop = new Point(bullet.getX(), bullet.getY() - (bullet.getRadius()+ 1));
         AlienWall alienWall = new AlienWall(canvas);
         Boolean value = interactionManager.alienIntersection(bullet, alienWall, canvas);
-        assertTrue(value);
+        assertFalse(value);
     }
 
 }
