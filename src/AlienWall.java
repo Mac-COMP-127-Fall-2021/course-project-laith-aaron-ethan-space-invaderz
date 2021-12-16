@@ -1,5 +1,6 @@
-//Authors: Laith, Ethan, and Aaron
-//Class: Class that extends GraphicsGroup, and holds many aliens.
+
+// Authors: Laith, Ethan, and Aaron
+// Class: Class that extends GraphicsGroup, and holds many aliens.
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class AlienWall extends GraphicsGroup {
 
     /**
      * Creates a row of aliens.
+     * 
      * @param i
      * @param j
      */
@@ -45,6 +47,7 @@ public class AlienWall extends GraphicsGroup {
 
     /**
      * returns aliens list.
+     * 
      * @return aliens list.
      */
     public List<Alien> getAliens() {
@@ -88,15 +91,16 @@ public class AlienWall extends GraphicsGroup {
      * @return
      */
     public int getRandomNumber(int min, int max) {
-        /* help from
-        https://www.baeldung.com/java-generating-random-numbers-in-range
-        */
-        return (int) ((Math.random() * (max - min)) + min); 
+        /*
+         * help from https://www.baeldung.com/java-generating-random-numbers-in-range
+         */
+        return (int) ((Math.random() * (max - min)) + min);
     }
 
 
     /**
      * returns Y displacement of the wall since start of the game.
+     * 
      * @return
      */
     public double getYDisplacement() {

@@ -1,5 +1,6 @@
-//Authors: Laith, Ethan, Aaron.
-//Class Description: Class respresenting a bullet, which extends ellipse.
+
+// Authors: Laith, Ethan, Aaron.
+// Class Description: Class respresenting a bullet, which extends ellipse.
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 import java.awt.Color;
@@ -13,14 +14,15 @@ public class Bullet extends Ellipse {
 
     /**
      * Creates the bullets that are shot from the player's spaceship.
-     * @param canvas canvas to add bullets to.
+     * 
+     * @param canvas  canvas to add bullets to.
      * @param centerX
      * @param centerY
      */
     public Bullet(CanvasWindow canvas, SpaceShip spaceShip) {
         super(spaceShip.getCenterX(), spaceShip.getCenterY(), BULLET_RADIUS, BULLET_RADIUS * 7);
         this.centerX = spaceShip.getCenterX() - 2;
-        this.centerY = spaceShip.getCenterY() - spaceShip.getHeight()/8 + 1;
+        this.centerY = spaceShip.getCenterY() - spaceShip.getHeight() / 8 + 1;
 
         this.setFilled(true);
         this.setStroked(false);
@@ -69,6 +71,7 @@ public class Bullet extends Ellipse {
 
     /**
      * updates bullet's Y position
+     * 
      * @param y2 new Y position
      */
     public void updateYPosition(double y2) {
@@ -86,6 +89,7 @@ public class Bullet extends Ellipse {
 
     /**
      * Returns speed at which wall moves towards player's space ship.
+     * 
      * @return y Velocity of the wall.
      */
     public double getYVelocity() {
@@ -105,6 +109,7 @@ public class Bullet extends Ellipse {
 
     /**
      * checks for interaction between bullet and shields.
+     * 
      * @param canvas       canvas on which bullet is on.
      * @param shieldManger shields to check interaction with.
      * @return boolean: true if bullet and shield intersect.
@@ -115,8 +120,9 @@ public class Bullet extends Ellipse {
 
     /**
      * checks for interaction between bullet and player's spaceship.
+     * 
      * @param canvas canvas on which to test interaction.
-     * @param ship player's ship.
+     * @param ship   player's ship.
      * @return boolean: true if bullet and space ship intersect.
      */
     public boolean checkShipIntersetion(CanvasWindow canvas, SpaceShip ship) {

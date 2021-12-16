@@ -1,4 +1,5 @@
-//Authors: Laith, Aaron, Ethan
+
+// Authors: Laith, Aaron, Ethan
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
@@ -8,17 +9,18 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Rectangle;
 
-public class HealthMeter extends GraphicsObject{
+public class HealthMeter extends GraphicsObject {
 
     static Rectangle bar;
 
     /**
      * generates a health meter for the spaceship.
-     * @param x x position for health meter.
-     * @param y y position for health meter.
+     * 
+     * @param x      x position for health meter.
+     * @param y      y position for health meter.
      * @param canvas canvas to add health meter.
      */
-    public HealthMeter(double x, double y, CanvasWindow canvas){
+    public HealthMeter(double x, double y, CanvasWindow canvas) {
         bar = new Rectangle(x, y, SpaceShip.getHealth() * 1.5, 20); // creates health meter bar
         bar.setFillColor(new Color(203, 49, 20));
 
@@ -34,8 +36,8 @@ public class HealthMeter extends GraphicsObject{
     /**
      * Sets health meter width in accordance to health of the ship.
      */
-    public static void updateHealthMeter(){
-        bar.setSize(SpaceShip.getHealth() * 1.5,20);
+    public static void updateHealthMeter() {
+        bar.setSize(SpaceShip.getHealth() * 1.5, 20);
     }
 
     @Override

@@ -1,5 +1,6 @@
-//Authors: Laith, Ethan, Aaron.
-//Class Desctription: class representing the space ship, which extends the image class.
+
+// Authors: Laith, Ethan, Aaron.
+// Class Desctription: class representing the space ship, which extends the image class.
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
@@ -7,8 +8,8 @@ public class SpaceShip extends Image {
     public static final int WIDTH = 20;
     public static final int HEIGHT = 20;
     private static int health = 100;
-    
-    
+
+
     public SpaceShip(CanvasWindow canvas) {
         super(0, 0, "spaceShipImage.png");
         this.setScale(0.15); // changes size of space ship.
@@ -20,8 +21,8 @@ public class SpaceShip extends Image {
      * updates space ship image position.
      * 
      * @param spaceShipImage space ship.
-     * @param x new x value.
-     * @param y new y value.
+     * @param x              new x value.
+     * @param y              new y value.
      */
     private void updateCenter(double x, double y) {
         this.setCenter(x, y);
@@ -40,6 +41,7 @@ public class SpaceShip extends Image {
 
     /**
      * Checks if spaceShip is in bounds.
+     * 
      * @return true if in bounds, false if not.
      */
     public boolean ifInBounds() {
@@ -53,12 +55,13 @@ public class SpaceShip extends Image {
      * Damges ship by 20 health points.
      */
     public void damgeShield() {
-            health -= 20;
-            HealthMeter.updateHealthMeter(); 
+        health -= 20;
+        HealthMeter.updateHealthMeter();
     }
 
     /**
      * returns health points of ship.
+     * 
      * @return returns health points of ship.
      */
     public static int getHealth() {
@@ -67,17 +70,19 @@ public class SpaceShip extends Image {
 
     /**
      * returns center X position
+     * 
      * @return center X position
      */
     public double getCenterX() {
-        return this.getX() + this.getWidth()/2;
+        return this.getX() + this.getWidth() / 2;
     }
 
     /**
      * returns center Y position
+     * 
      * @return center Y position
      */
     public double getCenterY() {
-        return this.getY() + this.getHeight()/2;
+        return this.getY() + this.getHeight() / 2;
     }
 }

@@ -1,5 +1,6 @@
-//Authors: Laith, Ethan, Aaron.
-//Class Description: Class that creates each indvidual alien image, with alien methods like shoot.
+
+// Authors: Laith, Ethan, Aaron.
+// Class Description: Class that creates each indvidual alien image, with alien methods like shoot.
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
@@ -12,6 +13,7 @@ public class Alien extends Image {
 
     /**
      * Updates alien position.
+     * 
      * @param x new X position.
      * @param y new Y position.
      */
@@ -21,8 +23,9 @@ public class Alien extends Image {
 
     /**
      * Makes alien shoot a bullet downwards towawrds the space ship.
+     * 
      * @param canvas canvas to add bullet to.
-     * @param alien alien to shoot the bullet.
+     * @param alien  alien to shoot the bullet.
      */
     public void shoot(CanvasWindow canvas, AlienWall alienWall) {
         Bullet bullet = new Bullet(canvas, this, this.getCenter().getX(), this.getCenter().getY(), alienWall);
@@ -31,11 +34,11 @@ public class Alien extends Image {
     }
 
     public double getXCenter() {
-        return this.getX() + this.getWidth()/2;
+        return this.getX() + this.getWidth() / 2;
     }
 
     public double getYCenter() {
-        return this.getY() + this.getHeight()/2;
+        return this.getY() + this.getHeight() / 2;
     }
 
 }

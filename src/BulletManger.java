@@ -1,5 +1,7 @@
-//Authors: Laith, Ethan, Aaron.
-//Class Description: This class manages the bullets after they intersect with other graphical objects.
+
+// Authors: Laith, Ethan, Aaron.
+// Class Description: This class manages the bullets after they intersect with other graphical
+// objects.
 import java.util.ArrayList;
 
 import edu.macalester.graphics.CanvasWindow;
@@ -11,6 +13,7 @@ public class BulletManger {
 
     /**
      * Adds a bullet to canvas
+     * 
      * @param canvas
      * @param alienWall
      * @param spaceShip
@@ -21,6 +24,7 @@ public class BulletManger {
 
     /**
      * checks for bullet intersection and if there is, adds bullets to removed bullets.
+     * 
      * @param alienWall
      * @param interactionManager
      * @param canvas
@@ -39,11 +43,9 @@ public class BulletManger {
             bullet.shoot();
             if (bullet.checkAlienIntersection(alienWall, canvas)) {
                 bulletsToRemove.add(bullet);
-            } 
-            else if (bullet.checkShieldIntersection(canvas, shieldManger)) {
+            } else if (bullet.checkShieldIntersection(canvas, shieldManger)) {
                 bulletsToRemove.add(bullet);
-            }
-            else if (bullet.checkShipIntersetion(canvas, ship)) {
+            } else if (bullet.checkShipIntersetion(canvas, ship)) {
                 bulletsToRemove.add(bullet);
             }
         }
@@ -54,10 +56,11 @@ public class BulletManger {
 
     /**
      * Checks if alien bullets after intersected anything, and if so, adds them to removed bullets.
-     * @param alienWall alien wall to check interaction with.
-     * @param canvas canvas on which to check interaction.
+     * 
+     * @param alienWall    alien wall to check interaction with.
+     * @param canvas       canvas on which to check interaction.
      * @param shieldManger manages the interaction between shield and bullet.
-     * @param ship player's ship to test interaction with.
+     * @param ship         player's ship to test interaction with.
      */
     public static void shootAlienBullets(
         AlienWall alienWall,
@@ -68,10 +71,12 @@ public class BulletManger {
         for (Bullet alienBullet : alienBullets) {
             alienBullet.shootDown();
 
-            if (alienBullet.checkShieldIntersection(canvas, shieldManger)) { // tests if there is interaction between shield  and bullet.
+            if (alienBullet.checkShieldIntersection(canvas, shieldManger)) { // tests if there is interaction between
+                                                                             // shield and bullet.
                 removedBullets.add(alienBullet); // adds bullets to the list of bullets that should be removed.
             }
-            if (alienBullet.checkShipIntersetion(canvas, ship)) {  // tests if there is interaction between ship and bullet.
+            if (alienBullet.checkShipIntersetion(canvas, ship)) {  // tests if there is interaction between ship and
+                                                                   // bullet.
                 removedBullets.add(alienBullet); // adds bullets to the list of bullets that should be removed.
             }
         }

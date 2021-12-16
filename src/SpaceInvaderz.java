@@ -35,13 +35,13 @@ public class SpaceInvaderz {
      * Starts game. Animates objects on the screen and scans users interaction.
      */
     public void runGame() {
-        canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));  // Moves user's space ship on mouse move in X plane 
+        canvas.onMouseMove(event -> spaceShip.updateX(event.getPosition().getX()));  // Moves space ship to mouse x position
         canvas.onClick(event -> BulletManger.addShot(canvas, alienWall, spaceShip)); // shoots bullets on mouse click
 
         canvas.animate(() -> {
             if (aliensLeft() && !shipDestroyed() && !aliensAtShip()) {
                 BulletManger.shootBullets(alienWall, interactionManager, canvas, spaceShieldManger, spaceShip);
-                BulletManger.shootAlienBullets(alienWall, canvas, spaceShieldManger, spaceShip); // randomly shoots bullets from aliens with delay
+                BulletManger.shootAlienBullets(alienWall, canvas, spaceShieldManger, spaceShip); // randomly shoots bullets from aliens
                 alienWall.moveY(); // slowly moves alien wall in Y direction closer to the player's spaceship.
                 alienWall.moveX(); // slowly moves alien wall in X direction.
                 alienWall.alienShoot();
@@ -81,6 +81,7 @@ public class SpaceInvaderz {
 
     /**
      * checks to see if aliens have reach player's ship.
+     * 
      * @return boolean: true if alien's reached.
      */
     public boolean aliensAtShip() {
@@ -95,6 +96,7 @@ public class SpaceInvaderz {
 
     /**
      * checks if any aliens are left
+     * 
      * @return boolean: true if there aliens left. flase is aliens are dead.
      */
     public boolean aliensLeft() {
@@ -103,8 +105,10 @@ public class SpaceInvaderz {
         }
         return false;
     }
+
     /**
      * checks if ship has been destroyed
+     * 
      * @return true if ship is dead. false if ship is alive.
      */
     public boolean shipDestroyed() {
