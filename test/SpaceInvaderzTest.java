@@ -14,7 +14,7 @@ public class SpaceInvaderzTest {
         spaceShield.getDamged();
         int newCondition = 2;
         assertEquals(newCondition, spaceShield.getHealth());
-    }
+    } 
 
     @Test
     public void testAlienLogic() {
@@ -26,7 +26,6 @@ public class SpaceInvaderzTest {
         Boolean value = interactionManager.alienIntersection(bullet, alienWall, canvas);
         assertFalse(value);
     }
-
 }
 
 
