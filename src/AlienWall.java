@@ -78,8 +78,8 @@ public class AlienWall extends GraphicsGroup {
     public void alienShoot() {
         int timePause = getRandomNumber(0, 1000); // returns a random number between 0 and 1000.
         if (timePause <= 20 && timePause >= 0) { // shoots if random number is between 0 and 20.
-            int alienInd = getRandomNumber(0, aliens.size()); // chooses random alien.
-            aliens.get(alienInd).shoot(getCanvas(), this); // makes the radom alien shoot.
+            int alienIndex = getRandomNumber(0, aliens.size()); // chooses random alien.
+            aliens.get(alienIndex).shoot(getCanvas(), this); // makes the radom alien shoot.
         }
     }
 

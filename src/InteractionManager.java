@@ -46,7 +46,7 @@ public class InteractionManager {
         for (SpaceShield shield : shieldManger.getShields()) {
             if (canvas.getElementAt(bulletTop) == shield || canvas.getElementAt(bulletBottom) == shield) {
                 if (BulletManger.alienBullets.contains(bullet)) {
-                    if (shield.getHealth() - 1 == 0) {
+                    if (shield.getHealth() - 1  == 0) {
                         canvas.remove(shield);
                         canvas.remove(bullet);
                         shieldManger.getShields().remove(shield);
@@ -54,7 +54,8 @@ public class InteractionManager {
                         canvas.remove(bullet);
                         shield.getDamged(); // reduces shield health by 1
                     }
-                } else {
+                }
+                else {
                     canvas.remove(bullet);
                 }
                 return true;
