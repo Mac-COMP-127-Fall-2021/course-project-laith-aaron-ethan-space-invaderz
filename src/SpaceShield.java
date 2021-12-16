@@ -4,19 +4,26 @@
 import edu.macalester.graphics.Image;
 
 public class SpaceShield extends Image {
-    private int condition = 3;
+    private int health = 3;
     
     public SpaceShield() {
         super(0, 0, "shield2.png");
         this.setScale(0.3);  // changes size of space shield
     }
 
-    public int getCondition() {
-        return condition;
+    /**
+     * returns space shield's current health
+     * @return
+     */
+    public int getHealth() {
+        return health;
     }
 
-    public void damage() {
-        condition -= 1;
+    /**
+     * reduces shield health by 1.
+     */
+    public void getDamged() {
+        health -= 1;
     }
 
 }

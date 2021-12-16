@@ -11,9 +11,9 @@ public class SpaceInvaderzTest {
     @Test
     public void testShieldDamageLogic() {
         SpaceShield spaceShield = new SpaceShield();
-        spaceShield.damage();
+        spaceShield.getDamged();
         int newCondition = 2;
-        assertEquals(newCondition, spaceShield.getCondition());
+        assertEquals(newCondition, spaceShield.getHealth());
     }
 
     @Test

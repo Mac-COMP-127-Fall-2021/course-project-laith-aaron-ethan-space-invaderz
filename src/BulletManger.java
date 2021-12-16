@@ -80,15 +80,4 @@ public class BulletManger {
             alienBullets.remove(alienBullet);
         }
     }
-
-    public static ArrayList<Bullet> getBullets() {
-        if (playerBullets.isEmpty()) {
-            return null;
-        } else {
-            return playerBullets;
-        }
-    }
-
-
-
 }

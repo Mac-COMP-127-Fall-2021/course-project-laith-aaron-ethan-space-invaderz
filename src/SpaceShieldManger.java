@@ -13,6 +13,7 @@ public class SpaceShieldManger  {
         this.canvas = canvas;
         generateSpaceShields(canvas);
     }
+
     /**
      * Creates the space shields and adds then to canvas.
      * @param canvas
@@ -26,6 +27,10 @@ public class SpaceShieldManger  {
         }
     }
 
+    /**
+     * returns list of shields.
+     * @return list of shields.
+     */
     public List<SpaceShield> getShields() {
         return shields;
     }

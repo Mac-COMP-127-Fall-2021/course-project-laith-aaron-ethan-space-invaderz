@@ -3,6 +3,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
 
 public class InteractionManager {
+
     /**
      * checks to see if a bullet has intersected with one of the aliens, and removes aliens that are getting shot.
      * @param bullet bullet to check interaction with.
@@ -23,6 +24,7 @@ public class InteractionManager {
         }
         return false;
     }
+
     /**
      * checks to see if a bullet has intersected with shield, if it still has health take one away.
      * @param bullet bullet to check interaction with.
@@ -31,25 +33,26 @@ public class InteractionManager {
      * @return boolean: true if there is interaction. false if there is not
      */
     public boolean sheildIntersection(Bullet bullet, SpaceShieldManger shieldManger, CanvasWindow canvas) {
-        Point bulletTop = new Point(bullet.getX(), bullet.getY() - (bullet.getRadius() + 1));
-        Point bulletBottom = new Point(bullet.getX(), bullet.getY() + (bullet.getRadius() + 1));
+        Point bulletTop = new Point(bullet.getX(), bullet.getY() - (bullet.getRadius() + 1)); // returns bullet's top position
+        Point bulletBottom = new Point(bullet.getX(), bullet.getY() + (bullet.getRadius() + 1)); // returns bullet's bottom position
         
         for (SpaceShield shield : shieldManger.getShields()) {
              if (canvas.getElementAt(bulletTop) == shield || canvas.getElementAt(bulletBottom) == shield) {
-                if (shield.getCondition() == 0) {
+                if (shield.getHealth() == 0) {
                     canvas.remove(shield);
                     canvas.remove(bullet);
                     shieldManger.getShields().remove(shield);
                 }
                 else {
                     canvas.remove(bullet);
-                    shield.damage();
+                    shield.getDamged(); // reduces shield health by 1
                 }
                     return true;
              }
         }
         return false;
     }
+
     /**
      * check to see if bullet has intersected with the spaceship.
      * @param bullet bullet to check interaction with.
@@ -61,7 +64,7 @@ public class InteractionManager {
             Point bulletBottom = new Point(bullet.getX(), bullet.getY() + bullet.getRadius() + 1); // gets position at bottom of bullet.
             if (canvas.getElementAt(bulletBottom) == ship) { // checks for interaction between bullet and ship
                 canvas.remove(bullet); // removes bullet from canvas
-                ship.getDamged();  // lowers ship health
+                ship.damgeShield();  // lowers ship health
                 return true;
             }
         return false;

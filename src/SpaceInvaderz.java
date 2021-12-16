@@ -79,23 +79,6 @@ public class SpaceInvaderz {
         canvas.add(background);
     }
 
-    public static int getCanvasWidth() {
-        return CANVAS_WIDTH;
-    }
-
-    public static int getCanvasHeight() {
-        return CANVAS_HEIGHT;
-    }
-
-    public static CanvasWindow getCanvas() {
-        return canvas;
-    }
-
-    public static void main(String[] args) {
-        SpaceInvaderz sp = new SpaceInvaderz();
-        sp.runGame();
-    }
-
     /**
      * checks to see if aliens have reach player's ship.
      * @return boolean: true if alien's reached.
@@ -131,4 +114,20 @@ public class SpaceInvaderz {
         return false;
     }
 
+    public static int getCanvasWidth() {
+        return CANVAS_WIDTH;
+    }
+
+    public static int getCanvasHeight() {
+        return CANVAS_HEIGHT;
+    }
+
+    public static CanvasWindow getCanvas() {
+        return canvas;
+    }
+
+    public static void main(String[] args) {
+        SpaceInvaderz spaceInvaderz = new SpaceInvaderz();
+        spaceInvaderz.runGame();
+    }
 }

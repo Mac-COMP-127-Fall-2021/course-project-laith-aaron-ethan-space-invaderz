@@ -39,6 +39,33 @@ public class SpaceShip extends Image {
     }
 
     /**
+     * Checks if spaceShip is in bounds.
+     * @return true if in bounds, false if not.
+     */
+    public boolean ifInBounds() {
+        if ((getCenterX() + (WIDTH / 2) < SpaceInvaderz.getCanvasWidth()) && getCenterX() - (WIDTH / 2) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Damges ship by 20 health points.
+     */
+    public void damgeShield() {
+            health -= 20;
+            HealthMeter.updateHealthMeter(); 
+    }
+
+    /**
+     * returns health points of ship.
+     * @return returns health points of ship.
+     */
+    public static int getHealth() {
+        return health;
+    }
+
+    /**
      * returns center X position
      * @return center X position
      */
@@ -52,32 +79,5 @@ public class SpaceShip extends Image {
      */
     public double getCenterY() {
         return this.getY() + this.getHeight()/2;
-    }
-
-    /**
-     * Checks if spaceShip is in bounds.
-     * @return true if in bounds, false if not.
-     */
-    public boolean ifInBounds() {
-        if ((getCenterX() + (WIDTH / 2) < SpaceInvaderz.getCanvasWidth()) && getCenterX() - (WIDTH / 2) > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * returns health points of ship.
-     * @return returns health points of ship.
-     */
-    public static int getHealth() {
-        return health;
-    }
-
-    /**
-     * Damges ship by 20 health points.
-     */
-    public void getDamged() {
-            health -= 20;
-            HealthMeter.updateHealthMeter(); 
     }
 }
