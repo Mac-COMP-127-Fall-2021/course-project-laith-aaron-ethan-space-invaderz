@@ -1,6 +1,12 @@
 # Space Invaderz
-![space Invaderz](https://user-images.githubusercontent.com/60319236/171985637-208296af-9729-4deb-b76a-f8cb01e54a8f.png)
 
+[![space Invaderz](https://user-images.githubusercontent.com/60319236/173165748-e3f445ea-d58a-418e-ba49-64525a602d64.png)](https://youtu.be/e-hH6BHH3ok)
+
+<h1 align="center">
+☝️ Click Thumbnail to watch Demo on YouTube ☝️
+</h1>
+
+<br>
 
 # Things we've learned
 1. Using Git and Github with a team
